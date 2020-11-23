@@ -1,0 +1,22 @@
+platform :ios do
+    desc "Create keychain"
+        lane :create_ci_keychain do 
+            create_keychain(
+                name: "TestKeychain",
+                password: "password",
+                default_keychain: false,
+                unlock: true,
+                timeout: 1800,
+                lock_when_sleeps: false,
+                require_create: false
+            )
+        end
+    
+    desc "Unlock keychain"
+        lane :unlock_ci_keychain do
+            unlock_keychain(
+                path: "TestKeychain",
+                password: "password"
+            )
+        end
+end
